@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor 💖</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Isso é pra quando Você se sentir sozinha!</h1>
+        <h2>❤️leia sempre que sentir saudades❤️</h2>
+    </header>
+
+    <main class="container">
+        <section id="message-box" class="card">
+            <h2>Clique no Botão Fofo!</h2>
+            <p>Descubra quantas vezes e por que eu te amo...</p>
+        </section>
+
+        <button id="next-button" class="cute-button">
+            Diga-me Por Quê! ✨
+        </button>
+
+        <p class="counter">Mensagem #<span id="message-counter">0</span></p>
+
+    </main>
+
+    <footer>
+        <p>&copy; Feito para iorrany, meu amor eterno... 🥰</p>
+    </footer>
+
+    <script>
+        // Lógica de Interação com JSON
+        document.addEventListener('DOMContentLoaded', () => {
+            const messageBox = document.getElementById('message-box');
+            const nextButton = document.getElementById('next-button');
+            const messageCounter = document.getElementById('message-counter');
+            let currentIndex = 0;
+            let messages = [];
+
+            // 1. Carregar o JSON
+            fetch('data.json')
+                .then(response => response.json())
+                .then(data => {
+                    messages = data.messages;
+                    messageCounter.textContent = '1';
+                    // Exibe a primeira mensagem ao carregar
+                    displayMessage(currentIndex);
+                })
+                .catch(error => {
+                    messageBox.innerHTML = '<h2>Erro ao Carregar!</h2><p>Ops, algo deu errado. O JSON está aí?</p>';
+                    console.error('Erro ao carregar o JSON:', error);
+                });
+
+            // 2. Função para exibir a mensagem
+            const displayMessage = (index) => {
+                if (messages.length === 0) return;
+
+                const message = messages[index];
+                
+                // Animação de entrada e saída
+                messageBox.classList.add('fade-out');
+                
+                setTimeout(() => {
+                    messageBox.innerHTML = `
+                        <h2>${message.title}</h2>
+                        <p class="reason-text">${message.reason}</p>
+                    `;
+                    messageBox.classList.remove('fade-out');
+                    messageBox.classList.add('fade-in');
+                }, 300); // Espera a animação de saída terminar
+                
+                // Atualiza o contador
+                messageCounter.textContent = index + 1;
+
+                // Checa se é a última mensagem
+                if (index === messages.length - 1) {
+                    nextButton.textContent = "Meu Amor É Infinito! ❤️";
+                    nextButton.disabled = true;
+                } else {
+                    nextButton.textContent = "Próxima Razão! ✨";
+                }
+            };
+            
+            // 3. Evento do botão
+            nextButton.addEventListener('click', () => {
+                if (currentIndex < messages.length - 1) {
+                    currentIndex++;
+                    displayMessage(currentIndex);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

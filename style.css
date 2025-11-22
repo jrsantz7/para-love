@@ -1,0 +1,162 @@
+/* Importação de uma fonte fofa (opcional) */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;700&display=swap');
+
+/* Estilos Gerais e Fundo */
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #ffeef2; /* Rosa bebê suave */
+    color: #4a4a4a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    text-align: center;
+}
+
+header {
+    background-color: #420079; /* Rosa mais forte */
+    color: white;
+    width: 100%;
+    padding: 20px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    font-family: 'Pacifico', cursive; /* Fonte cursiva para o título */
+    font-size: 2.5em;
+    margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Container Principal */
+.container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    max-width: 90%;
+    width: 600px;
+}
+
+/* Cartão de Mensagem (Interativo) */
+.card {
+    background-color: rgba(235, 212, 247, 0.616);
+    border-radius: 20px;
+    padding: 40px 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 20px rgba(137, 0, 228, 0.5); /* Sombra fofa */
+    width: 100%;
+    min-height: 180px; /* Para manter o layout estável */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s ease-in-out;
+}
+
+.card h2 {
+    color: #c71ee9; /* Cor de amor */
+    font-family: 'Pacifico', cursive;
+    font-size: 2.0em;
+    margin-top: 0;
+}
+
+.reason-text {
+    font-size: 1.2em;
+    line-height: 1.5;
+    font-weight: 500;
+}
+
+/* Efeito de Transição da Mensagem */
+.fade-out {
+    opacity: 0;
+    transform: scale(0.95);
+}
+
+.fade-in {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Botão Fofo */
+.cute-button {
+    background-color: #5a09a5cc; /* Vermelho/Rosa Vívido */
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 5px #963eddab; /* Sombra 3D fofa */
+    transition: all 0.2s;
+    outline: none;
+}
+
+.cute-button:hover {
+    background-color: #900fdb65;
+}
+
+.cute-button:active {
+    box-shadow: 0 2px #6b1494;
+    transform: translateY(3px);
+}
+
+.cute-button:disabled {
+    background-color: #ccc;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Contador de Mensagens */
+.counter {
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: #9000ad;
+    font-weight: bold;
+}
+
+#message-counter {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.5em;
+    margin-left: 5px;
+}
+
+/* Rodapé */
+footer {
+    width: 100%;
+    padding: 15px 0;
+    margin-top: 20px;
+    border-top: 1px solid #ffb8c4;
+    color: #530663;
+    font-size: 0.9em;
+
+    /* Estilos para celular */
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  .container {
+    width: 100%;
+    padding: 10px;
+  }
+}
+
+/* Estilos para tablet */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    width: 90%;
+  }
+}
+
+/* Estilos para desktop */
+@media screen and (min-width: 1025px) {
+  .container {
+    width: 1200px;
+  }
+}
+}
